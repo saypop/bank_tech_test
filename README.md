@@ -59,7 +59,10 @@ Statement Class with:
     I can print out a statement`
 
 2. Write feature test for Account Class:
-    - initalises with balance of 0;
-    - initalises with a statement;
+    - initialises with balance of 0;
+    - initialises with a statement;
     - has a deposit method that increases the balance;
     - has a deposit method that stores the transaction;
+    - has a withdraw method that decreases the balance;
+    - has a withdraw method that stores the transaction;
+    - has a withdraw method that raises an error when funds are insufficient;

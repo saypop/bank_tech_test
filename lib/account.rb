@@ -12,6 +12,10 @@ class Account
     @statement.store(amount, date, balance = @balance, type = "credit")
   end
 
-
+  def withdraw(amount, date = Time.now.strftime("%d/%m/%Y"))
+    raise "Insufficient funds. Your current balance is #{@balance}." if amount > @balance
+    @balance -= amount
+    @statement.store(amount, date, @balance, "debit")
+  end
 
 end
