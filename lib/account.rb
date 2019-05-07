@@ -7,4 +7,11 @@ class Account
     @statement = statement_class.new
   end
 
+  def deposit(amount, date = Time.now.strftime("%d/%m/%Y"))
+    @balance += amount
+    @statement.store(amount, date, balance = @balance, type = "credit")
+  end
+
+
+
 end

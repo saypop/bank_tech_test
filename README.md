@@ -62,3 +62,4 @@ Statement Class with:
     - initalises with balance of 0;
     - initalises with a statement;
     - has a deposit method that increases the balance;
+    - has a deposit method that stores the transaction;
