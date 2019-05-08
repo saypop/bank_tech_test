@@ -1,3 +1,5 @@
+require_relative 'statement'
+
 class Account
 
   attr_reader :balance, :statement
@@ -16,6 +18,12 @@ class Account
     raise "Insufficient funds. Your current balance is #{@balance}." if amount > @balance
     @balance -= amount
     @statement.store(amount, date, @balance, "debit")
+  end
+
+  def print_statement
+    @statement.printout.each do |line|
+      puts line
+    end
   end
 
 end

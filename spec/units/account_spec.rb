@@ -1,16 +1,7 @@
 require 'account'
+require 'test_helpers'
 
 describe Account do
-
-    def test_setup
-      @statement_double = double('statement', :store => nil)
-      @statement_class_double = double('Statement', :new => @statement_double)
-      @account = described_class.new(@statement_class_double)
-    end
-
-    def top_up
-      @account.deposit(100)
-    end
 
     describe 'Intialization' do
 
@@ -56,9 +47,18 @@ describe Account do
         @account.withdraw(10, "7/5/2019")
       end
 
-      it 'raises an error when funds are less than withdraw amount' do 
+      it 'raises an error when funds are less than withdraw amount' do
         test_setup
         expect{@account.withdraw(10)}.to raise_error("Insufficient funds. Your current balance is 0.")
+      end
+
+    end
+
+    describe '.print_statement' do
+
+      it 'prints a statement' do
+        test_setup
+        expect{ Account.new.print_statement }.to output("date || credit || debit || balance\n").to_stdout
       end
 
     end
