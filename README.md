@@ -51,7 +51,13 @@ date || credit || debit || balance
 2. Domain modelling:
     ![Object Model](domain_model.png)
 
-3. Write tests for Account Class:
+3. Write feature tests.
+    - Open account;
+    - Print blank statement;
+    - Make deposit and print statement;
+    - Make withdrawal and print statement.
+
+4. Write tests for Account Class:
     - initialises with balance of 0;
     - initialises with a statement;
     - has a deposit method that increases the balance;
@@ -67,4 +73,4 @@ date || credit || debit || balance
 4. Write tests for Transaction Class:
     - initialises with date, credit, debit, and balance attributes.
 
-5. Write feature tests.
+My approach wasn't strict TDD since I was switching at times between making features work first and making individual units work but the end product is fully tested, easily changed and easy to read.

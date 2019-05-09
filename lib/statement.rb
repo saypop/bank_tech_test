@@ -6,10 +6,18 @@ class Statement
     @printout = ['date || credit || debit || balance']
   end
 
-  def store(amount, date, balance, type)
-    amount = '%.2f' % amount
-    balance = '%.2f' % balance
-    line = "#{date} || #{amount if type == 'credit'} || #{amount if type == 'debit'} || #{balance}"
-    @printout << line
+  def print_statement(transactions)
+    puts @printout
+    transactions.each do |transaction|
+      puts "#{
+      transaction.date
+      } || #{
+      transaction.credit
+      } || #{
+      transaction.debit
+      } || #{
+      transaction.balance
+      }"
+    end
   end
 end

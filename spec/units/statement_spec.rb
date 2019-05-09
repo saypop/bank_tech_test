@@ -11,11 +11,26 @@ describe Statement do
     end
   end
 
-  describe '.store' do
-    it 'adds a new transaction to the printout' do
-      expect { @statement.store(10, '07/05/2019', 90, 'debit') }.to change {
-        @statement.printout[1]
-      }.from(nil).to('07/05/2019 ||  || 10.00 || 90.00')
+  describe '.print_statement' do
+    it 'prints out a blank statement' do
+      transactions_double = []
+      expect { @statement.print_statement(transactions_double) }.to output(
+        "date || credit || debit || balance\n"
+      ).to_stdout
+    end
+
+    it 'prints out a statement with transactions' do
+      transaction_double = double(
+        'transaction',
+        :date => "01/01/2019",
+        :credit => "100.00",
+        :debit => nil,
+        :balance => "200.00"
+      )
+      transactions_double = [transaction_double]
+      expect { @statement.print_statement(transactions_double) }.to output(
+        "date || credit || debit || balance\n01/01/2019 || 100.00 ||  || 200.00\n"
+      ).to_stdout
     end
   end
 end

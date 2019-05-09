@@ -8,24 +8,31 @@ describe Account do
       expect(@account.balance).to eq(0)
     end
 
-    it 'creates a statement object' do
+    it 'has an empty transactions array' do
       test_setup
-      expect(@account.statement).to eq(@statement_double)
+      expect(@account.transactions).to eq([])
     end
   end
 
   describe '.deposit' do
     it 'increases the balance' do
       test_setup
-      expect { @account.deposit(10) }.to change { @account.balance }.by(10)
+      expect { @account.deposit(10, @transaction_class_double) }.to change { @account.balance }.by(10)
     end
 
-    it 'stores the transaction in statement' do
+    it 'creates a transaction' do
       test_setup
-      expect(@statement_double).to receive(:store).with(
-        10, '7/5/2019', 10, 'credit'
+      expect(@transaction_class_double).to receive(:new).with(
+        '07/05/2019', 10, nil, 10
       )
-      @account.deposit(10, '7/5/2019')
+      @account.deposit(10, @transaction_class_double, '07/05/2019')
+    end
+
+    it 'stores a transaction' do
+      test_setup
+      expect{
+        @account.deposit(10, @transaction_class_double, '07/05/2019')
+      }.to change{ @account.transactions }.from([]).to([@transaction_double])
     end
   end
 
@@ -33,16 +40,28 @@ describe Account do
     it 'decreases the balance' do
       test_setup
       top_up
-      expect { @account.withdraw(10) }.to change { @account.balance }.by(-10)
+      expect { @account.withdraw(10, @transaction_class_double) }.to change {
+        @account.balance
+      }.by(-10)
     end
 
-    it 'stores the transaction in statement' do
+    it 'creates a transaction' do
       test_setup
       top_up
-      expect(@statement_double).to receive(:store).with(
-        10, '7/5/2019', 90, 'debit'
+      expect(@transaction_class_double).to receive(:new).with(
+        '07/05/2019', nil, 10, 90
       )
-      @account.withdraw(10, '7/5/2019')
+      @account.withdraw(10, @transaction_class_double, '07/05/2019')
+    end
+
+    it 'stores a transaction' do
+      test_setup
+      top_up
+      expect{
+        @account.withdraw(10, @transaction_class_double, '07/05/2019')
+      }.to change{ @account.transactions }.from([@transaction_double]).to(
+        [@transaction_double, @transaction_double]
+      )
     end
 
     it 'raises an error when funds are less than withdraw amount' do
@@ -56,9 +75,8 @@ describe Account do
   describe '.print_statement' do
     it 'prints a statement' do
       test_setup
-      expect { Account.new.print_statement }.to output(
-        "date || credit || debit || balance\n"
-      ).to_stdout
+      expect(@statement_double).to receive(:print_statement).with([])
+      @account.print_statement(@statement_double)
     end
   end
 end

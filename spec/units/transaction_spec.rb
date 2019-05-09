@@ -11,13 +11,13 @@ describe Transaction do
       expect(@subject.date).to eq("12/03/2019")
     end
     it 'has a readable credit attribute' do
-      expect(@subject.credit).to eq(100.00)
+      expect(@subject.credit).to eq("100.00")
     end
     it 'has a readable debit attribute' do
       expect(@subject.debit).to eq(nil)
     end
     it 'has a readable balance attribute' do
-      expect(@subject.balance).to eq(150.00)
+      expect(@subject.balance).to eq("150.00")
     end
   end
 
