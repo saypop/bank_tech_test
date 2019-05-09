@@ -33,6 +33,8 @@
     I can print out a statement`
 
 2. Domain modelling:
+
+
     ![Object Model](domain_model.png)
 
 3. Write feature tests.
