@@ -4,14 +4,10 @@ class Transaction
 
   def initialize(date, credit = nil, debit = nil, balance)
     @date = date
-    unless credit.nil?
-      @credit = credit
-      @credit = format('%.2f', credit)
-    end
-    unless debit.nil?
-      @debit = debit
-      @debit = format('%.2f', debit)
-    end
+    @credit = credit
+    @credit = format('%.2f', credit) unless credit.nil?
+    @debit = debit
+    @debit = format('%.2f', debit) unless debit.nil?
     @balance = format('%.2f', balance)
   end
 end

@@ -2,7 +2,7 @@ require 'transaction'
 
 describe Transaction do
   before :all do
-    @subject = Transaction.new('12/03/2019', 100.00, nil, 150.00)
+    @subject = described_class.new('12/03/2019', 100.00, nil, 150.00)
   end
 
   describe 'Intialization' do
