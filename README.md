@@ -11,23 +11,7 @@
 2. `cd bank_tech_test`
 3. `irb` then:
 
-`
-2.5.0 :001 > require './lib/account.rb'
- => true
-2.5.0 :002 > account = Account.new
- => #<Account:0x00007fd9b391a048 @balance=0, @statement=#<Statement:0x00007fd9b391a020 @printout=["date || credit || debit || balance"]>>
-2.5.0 :003 > account.deposit(1000)
- => ["date || credit || debit || balance", "08/05/2019 || 1000.0 ||  || 1000.0"]
-2.5.0 :004 > account.withdraw(100)
- => ["date || credit || debit || balance", "08/05/2019 || 1000.0 ||  || 1000.0", "08/05/2019 ||  || 100.0 || 900.0"]
-2.5.0 :005 > account.withdraw(150)
- => ["date || credit || debit || balance", "08/05/2019 || 1000.0 ||  || 1000.0", "08/05/2019 ||  || 100.0 || 900.0", "08/05/2019 ||  || 150.0 || 750.0"]
-2.5.0 :006 > account.print_statement
-date || credit || debit || balance
-08/05/2019 || 1000.0 ||  || 1000.0
-08/05/2019 ||  || 100.0 || 900.0
-08/05/2019 ||  || 150.0 || 750.0
-`
+![Product Screenshot](product_screenshot.png)
 
 ### Testing
 `rspec`
