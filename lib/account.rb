@@ -18,6 +18,7 @@ class Account
     if amount > @balance
       raise "Insufficient funds. Your current balance is #{@balance}."
     end
+
     @balance -= amount
     @transactions << transaction_class.new(date, nil, amount, @balance)
   end

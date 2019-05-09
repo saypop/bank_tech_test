@@ -30,9 +30,9 @@ describe Account do
 
     it 'stores a transaction' do
       test_setup
-      expect{
+      expect do
         @account.deposit(10, @transaction_class_double, '07/05/2019')
-      }.to change{ @account.transactions }.from([]).to([@transaction_double])
+      end.to change { @account.transactions }.from([]).to([@transaction_double])
     end
   end
 
@@ -57,9 +57,9 @@ describe Account do
     it 'stores a transaction' do
       test_setup
       top_up
-      expect{
+      expect do
         @account.withdraw(10, @transaction_class_double, '07/05/2019')
-      }.to change{ @account.transactions }.from([@transaction_double]).to(
+      end.to change { @account.transactions }.from([@transaction_double]).to(
         [@transaction_double, @transaction_double]
       )
     end

@@ -22,10 +22,10 @@ describe Statement do
     it 'prints out a statement with transactions' do
       transaction_double = double(
         'transaction',
-        :date => "01/01/2019",
-        :credit => "100.00",
-        :debit => nil,
-        :balance => "200.00"
+        date: '01/01/2019',
+        credit: '100.00',
+        debit: nil,
+        balance: '200.00'
       )
       transactions_double = [transaction_double]
       expect { @statement.print_statement(transactions_double) }.to output(
