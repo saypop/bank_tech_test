@@ -58,5 +58,3 @@
 
 4. Write tests for Transaction Class:
     - initialises with date, credit, debit, and balance attributes.
-
-My approach wasn't strict TDD since I was switching at times between making features work first and making individual units work but the end product is fully tested, easily changed and easy to read.
