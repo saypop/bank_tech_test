@@ -4,6 +4,7 @@
 1. TDD
 2. Maximum test coverage
 3. Readability
+4. Problem Solving
 
 ### Instructions
 1. `git clone https://github.com/saypop/bank_tech_test.git`
